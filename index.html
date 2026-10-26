@@ -20,38 +20,42 @@
     .range-wrap{display:grid;gap:6px}.range-head{display:flex;justify-content:space-between;gap:8px;font-size:.86rem;font-weight:800;color:#4b6570}.range-wrap input[type=range]{width:100%;height:36px;accent-color:#0d8e81;touch-action:pan-x}.values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.values label{display:grid;gap:4px;font-size:.8rem;color:#52707b;font-weight:800}.values input{width:100%;min-height:45px;border:1.5px solid #cdded8;border-radius:10px;background:#fcfefd;color:#173042;padding:7px 10px;font-size:1rem}.values label.hidden{display:none}
     .strategy{display:grid;grid-template-columns:1fr 1fr;gap:7px;background:#e8f0ed;padding:5px;border-radius:13px}.strategy button{border:0;min-height:48px;background:transparent;color:#46616a;border-radius:10px;font-weight:850}.strategy button.active{background:#103c4b;color:white}.feedback{min-height:54px;border-radius:13px;background:#f4f7f5;padding:11px 13px;color:#49636d;font-size:.89rem;line-height:1.45}.feedback.good{background:#e5f6ee;color:#0a6956}.feedback.warn{background:#fff3dc;color:#825d13}.mini-key{display:flex;align-items:center;gap:7px;color:#677c83;font-size:.78rem}.swatch{height:12px;width:12px;border-radius:4px;background:#15a893;display:inline-block}.swatch.alt{background:#efbb48}.swatch.ghost{background:#ee8065}.toggle{display:flex;align-items:center;gap:8px;font-size:.86rem;color:#4d6972;font-weight:750}.toggle input{width:20px;height:20px;accent-color:#0d665e}
     .footer{padding:16px 4px 0;color:#6a8188;font-size:.77rem;line-height:1.45}
+    .language{display:flex;gap:3px;padding:4px;border-radius:13px;background:#dce9e5;margin-left:auto}.language button{border:0;background:transparent;color:#45616b;border-radius:9px;min-height:42px;min-width:55px;padding:5px 10px;font-weight:800}.language button.active{background:#fff;color:#0d665e;box-shadow:0 3px 10px #17304217}.dual-en{display:block;color:#637b85;font-size:.78em;font-weight:600;line-height:1.4;margin-top:2px}.chip.active .dual-en,.primary .dual-en,.strategy button.active .dual-en{color:#dbf6ef}.cut-pick{display:flex;flex-wrap:wrap;gap:7px}.cut-pick button{border:1.5px solid #c7dcd6;background:#fff;border-radius:10px;padding:8px 12px;min-height:43px;color:#24515a;font-weight:800}.cut-pick button.active{border-color:#0d665e;background:#e7f5f0;color:#075f55}.mini-step{font-size:.82rem;color:#668087;font-weight:800}.shape-pick .chip{min-width:95px}.part-label{paint-order:stroke;stroke:#fff;stroke-width:5px;stroke-linejoin:round}.mast{flex-wrap:wrap}
+    .view-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;padding:9px 11px;border-radius:13px;background:#eef5f1}.view-toolbar label{display:flex;align-items:center;gap:7px;font-size:.8rem;font-weight:800;color:#3d5c65;white-space:nowrap}.view-toolbar input[type=range]{width:112px;accent-color:#0d8e81;touch-action:pan-x}.view-toolbar output{min-width:38px;text-align:right;color:#0b665c}.view-toolbar button{border:0;background:#fff;color:#28545a;border-radius:9px;min-height:40px;padding:6px 11px;font-weight:800}.view-toolbar .reset-view{margin-left:auto}
     @media(max-width:950px){.layout{grid-template-columns:1fr}.drawing{height:45vw;min-height:330px}.panel{display:grid;grid-template-columns:1fr 1fr;align-content:start}.panel>*{min-width:0}.panel .wide{grid-column:1/-1}}
-    @media(max-width:650px){.mast-note{display:none}.shell{padding:12px 10px 22px}.brandmark{height:42px;width:42px}.tabs{width:100%}.tabs button{flex:1;padding:10px 8px}.drawing{height:58vh;min-height:320px}.panel{display:flex}.values{grid-template-columns:repeat(3,minmax(0,1fr))}.board,.panel{border-radius:18px}.board{padding:10px}.board-head{margin:3px 5px 10px}.step-badge{font-size:.7rem}}
+    @media(max-width:650px){.mast-note{display:none}.language{width:100%;margin-left:0}.language button{flex:1}.shell{padding:12px 10px 22px}.brandmark{height:42px;width:42px}.tabs{width:100%}.tabs button{flex:1;padding:10px 8px}.drawing{height:58vh;min-height:320px}.panel{display:flex}.values{grid-template-columns:repeat(3,minmax(0,1fr))}.board,.panel{border-radius:18px}.board{padding:10px}.board-head{margin:3px 5px 10px}.step-badge{font-size:.7rem}}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
   </style>
 </head>
 <body>
 <div class="shell">
   <header class="mast">
-    <div class="brand"><div class="brandmark" aria-hidden="true">▱</div><div><small>S1 · CHAPTER 5 · SECTION 5.1</small><h1>面積實驗室</h1></div></div>
-    <div class="mast-note">由圖形看見公式 · 用切割與填補解題</div>
+    <div class="brand"><div class="brandmark" aria-hidden="true">▱</div><div><small>S1 · CHAPTER 5 · SECTION 5.1</small><h1 id="brandTitle">面積實驗室</h1></div></div>
+    <div class="mast-note" id="mastNote">由圖形看見公式 · 用切割與填補解題</div>
+    <div class="language" role="group" aria-label="Language 語言"><button type="button" data-lang="zh">中文</button><button type="button" data-lang="en">English</button><button type="button" data-lang="both" class="active">中英</button></div>
   </header>
   <nav class="tabs" aria-label="學習模式">
     <button id="formulaTab" class="active" type="button" aria-selected="true">01　公式怎樣來？</button>
     <button id="polygonTab" type="button" aria-selected="false">02　切割與填補</button>
   </nav>
-  <p class="intro">先觀察、再猜想，最後才揭示算式。所有圖形可用手指操作，適合 iPad 投影。</p>
+  <p class="intro" id="intro">先觀察、再猜想，最後才揭示算式。所有圖形可用手指操作，適合 iPad 投影。</p>
 
   <section class="module active" id="formulaModule" aria-label="面積公式推導">
     <div class="formula-pick" id="formulaPick" role="group" aria-label="選擇圖形"></div>
     <div class="layout">
       <article class="board">
         <div class="board-head"><div><h2 id="formulaTitle"></h2><p id="formulaSubtitle"></p></div><span class="step-badge" id="formulaBadge">觀察</span></div>
+        <div class="view-toolbar" data-view="formula"><label><span class="rotateText">旋轉</span><input type="range" class="rotateRange" min="-180" max="180" value="0" aria-label="Rotate formula shape"><output class="rotateValue">0°</output></label><label><span class="zoomText">縮放</span><input type="range" class="zoomRange" min="50" max="180" value="100" aria-label="Zoom formula shape"><output class="zoomValue">100%</output></label><button class="reset-view" type="button">重設視角</button></div>
         <svg class="drawing" id="formulaSvg" viewBox="0 0 560 380" role="img" aria-label="可互動的面積公式圖形"></svg>
       </article>
       <aside class="panel">
         <div class="callout wide"><div class="question" id="formulaQuestion"></div><div id="formulaExplain"></div></div>
-        <div class="range-wrap wide"><div class="range-head"><span>推導進度</span><span id="formulaStep">第 1 步／3 步</span></div><input id="formulaRange" type="range" min="0" max="100" value="0" aria-label="拖動以推導公式"></div>
+        <div class="range-wrap wide"><div class="range-head"><span id="progressLabel">推導進度</span><span id="formulaStep">第 1 步／3 步</span></div><input id="formulaRange" type="range" min="0" max="100" value="0" aria-label="拖動以推導公式"></div>
         <div class="controls-row wide"><button class="primary" id="formulaPlay" type="button">播放推導</button><button class="secondary" id="formulaReset" type="button">回到起點</button></div>
         <div class="values wide"><label id="topWrap">上底 a<input id="topInput" type="number" min="0.1" max="1000" step="any" value="5" inputmode="decimal"></label><label id="baseWrap">底 b<input id="baseInput" type="number" min="0.1" max="1000" step="any" value="8" inputmode="decimal"></label><label id="heightWrap">高 h<input id="heightInput" type="number" min="0.1" max="1000" step="any" value="5" inputmode="decimal"></label></div>
         <div class="formula-box wide" aria-live="polite"><div class="expression" id="formulaExpression"></div><div class="worked" id="formulaWorked"></div></div>
         <button class="secondary wide" id="formulaReveal" type="button">顯示／隱藏公式</button>
-        <p class="muted wide">請先問學生：移動或複製了圖形後，面積有沒有改變？哪一段才是垂直高？</p>
+        <p class="muted wide" id="teacherPrompt">請先問學生：移動或複製了圖形後，面積有沒有改變？哪一段才是垂直高？</p>
       </aside>
     </div>
   </section>
@@ -61,145 +65,22 @@
     <div class="layout">
       <article class="board">
         <div class="board-head"><div><h2 id="shapeTitle"></h2><p id="shapeSubtitle"></p></div><span class="step-badge" id="shapeBadge">先選方法</span></div>
+        <div class="view-toolbar" data-view="polygon"><label><span class="rotateText">旋轉</span><input type="range" class="rotateRange" min="-180" max="180" value="0" aria-label="Rotate polygon"><output class="rotateValue">0°</output></label><label><span class="zoomText">縮放</span><input type="range" class="zoomRange" min="50" max="180" value="100" aria-label="Zoom polygon"><output class="zoomValue">100%</output></label><button class="reset-view" type="button">重設視角</button></div>
         <svg class="drawing" id="polygonSvg" viewBox="0 0 560 380" role="img" aria-label="多邊形圖形；切割模式下可用手指畫分割線"></svg>
       </article>
       <aside class="panel">
         <div class="strategy wide" role="group" aria-label="解題方法"><button class="active" id="cutBtn" type="button">切割法：分開再加</button><button id="fillBtn" type="button">填補法：補上再減</button></div>
         <div class="callout wide"><div class="question" id="shapeQuestion"></div><div id="shapeExplain"></div></div>
-        <div id="cutControls" class="wide"><div class="feedback" id="drawFeedback" aria-live="polite">請在圖上用手指或滑鼠畫一條分割線。</div><div class="controls-row" style="margin-top:10px"><button class="secondary" id="cutHint" type="button">提示起點</button><button class="secondary" id="cutClear" type="button">清除線段</button></div></div>
-        <div id="fillControls" class="range-wrap wide" hidden><div class="range-head"><span>把缺口補成大圖形</span><span id="fillAmount">0%</span></div><input id="fillRange" type="range" min="0" max="100" value="0" aria-label="拖動以填補缺口"><p class="muted">拖動滑桿，看看要補上的部分在哪裏。</p></div>
+        <div id="cutControls" class="wide"><div class="mini-step" id="cutModeLabel">選擇切法</div><div class="cut-pick" id="cutPick" role="group" aria-label="選擇分割方向"></div><div class="feedback" id="drawFeedback" aria-live="polite" style="margin-top:10px">請在圖上用手指或滑鼠畫一條分割線。</div><div class="controls-row" style="margin-top:10px"><button class="secondary" id="cutHint" type="button">提示起點</button><button class="secondary" id="cutShow" type="button">顯示切法</button><button class="secondary" id="cutClear" type="button">清除線段</button></div></div>
+        <div id="fillControls" class="range-wrap wide" hidden><div class="range-head"><span id="fillLabel">把缺口補成大圖形</span><span id="fillAmount">0%</span></div><input id="fillRange" type="range" min="0" max="100" value="0" aria-label="拖動以填補缺口"><p class="muted" id="fillPrompt">拖動滑桿，看看要補上的部分在哪裏。</p></div>
         <div class="formula-box wide" aria-live="polite"><div class="expression" id="polygonExpression"></div><div class="worked" id="polygonWorked"></div></div>
         <div class="controls-row wide"><button class="primary" id="polygonReveal" type="button">顯示算式與答案</button><button class="secondary" id="polygonReset" type="button">重新探索</button></div>
-        <div class="mini-key wide"><span class="swatch"></span>原圖形 <span class="swatch alt"></span>切出來的部分 <span class="swatch ghost"></span>補上的部分</div>
+        <div class="mini-key wide"><span class="swatch"></span><span id="keyOriginal">原圖形</span> <span class="swatch alt"></span><span id="keyCut">切出來的部分</span> <span class="swatch ghost"></span><span id="keyFill">補上的部分</span></div>
       </aside>
     </div>
   </section>
-  <footer class="footer">根據 S1 Chapter 5.1「Areas and Volumes (I)」的圖形與面積主題設計。此工具的示範尺寸是獨立教學例子；練習題請以學校工作紙圖上的數值為準。程式不使用外部字型、圖片或資料服務。</footer>
+  <footer class="footer" id="footerText">根據 S1 Chapter 5.1「Areas and Volumes (I)」的圖形與面積主題設計。此工具的示範尺寸是獨立教學例子；練習題請以學校工作紙圖上的數值為準。程式不使用外部字型、圖片或資料服務。</footer>
 </div>
-<script>
-(() => {
-  'use strict';
-  const $ = s => document.querySelector(s);
-  const svgNS = 'http://www.w3.org/2000/svg';
-  const bg = `<defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#d9e6e0"/></pattern></defs><rect x="0" y="0" width="560" height="380" fill="url(#dots)"/>`;
-  const COLORS = {teal:'#15a893',amber:'#efbb48',coral:'#ee8065',ink:'#173042',line:'#65838c'};
-  const formulas = [
-    {id:'square',name:'正方形',sub:'由單位方格出發',question:'每行有多少格？一共有多少行？',explain:'逐行數方格，便能看出「邊長 × 邊長」。',steps:['數方格','排成行和列','寫出面積公式'],defaults:[6,6,6]},
-    {id:'rectangle',name:'長方形',sub:'先數方格，再把重複加法寫成乘法',question:'8 行，每行 5 格，如何不用逐格數？',explain:'行數乘每行的格數，便是整個長方形的面積。',steps:['觀察方格','數行與列','寫出面積公式'],defaults:[6,8,5]},
-    {id:'parallelogram',name:'平行四邊形',sub:'切下一塊，移成長方形',question:'切下一角並搬到另一邊，面積有改變嗎？',explain:'圖形只是重新排列；長方形的寬是底，另一方向是垂直高。',steps:['找垂直高','移動三角形','比較長方形'],defaults:[6,8,5]},
-    {id:'triangle',name:'三角形',sub:'複製一個全等三角形',question:'兩個相同的三角形，能拼成甚麼？',explain:'兩個全等三角形拼成一個平行四邊形，因此一個三角形佔一半。',steps:['選底與高','複製並拼合','取平行四邊形一半'],defaults:[6,8,5]},
-    {id:'trapezium',name:'梯形',sub:'複製並倒轉，拼成平行四邊形',question:'拼合後，新的底由哪兩段組成？',explain:'兩個全等梯形拼成底為 a + b、高為 h 的平行四邊形。',steps:['找兩條平行邊','複製並拼合','取平行四邊形一半'],defaults:[5,9,4]}
-  ];
-  const shapes = [
-    {id:'l',name:'L 形',title:'例子 A · L 形多邊形',sub:'外框 12 × 8；右上缺口 4 × 3（單位：cm）',question:'怎樣用一條線把它分成兩個長方形？',explain:'先試切割法，再切換到填補法；兩條路都應得到相同面積。',poly:'100,80 340,80 340,170 460,170 460,320 100,320',cut:[[340,170],[340,320]],parts:['100,80 340,80 340,320 100,320','340,170 460,170 460,320 340,320'],fill:['340,80 460,80 460,170 340,170'],fillOffset:[[140,-70]],labels:[['8 cm',220,69],['4 cm',400,162],['3 cm',322,129],['8 cm',71,206],['12 cm',280,349]],cutExp:'8 × 8 + 4 × 5 = 84 cm²',fillExp:'12 × 8 − 4 × 3 = 84 cm²',cutWhy:'左邊長方形 8 × 8；右邊長方形 4 × 5。',fillWhy:'大長方形 12 × 8，減去右上角 4 × 3 的缺口。'},
-    {id:'house',name:'屋形',title:'例子 B · 屋形五邊形',sub:'下方長方形 10 × 6；上方三角形高 4（單位：cm）',question:'你能把屋頂和屋身分開嗎？',explain:'屋頂是三角形。若用填補法，須補上左右兩個角。',poly:'130,150 280,30 430,150 430,330 130,330',cut:[[130,150],[430,150]],parts:['130,150 430,150 430,330 130,330','130,150 280,30 430,150'],fill:['130,30 280,30 130,150','280,30 430,30 430,150'],fillOffset:[[-130,-50],[130,-50]],labels:[['10 cm',280,354],['6 cm',455,250],['4 cm',293,97]],cutExp:'10 × 6 + ½ × 10 × 4 = 80 cm²',fillExp:'10 × 10 − 2 × (½ × 5 × 4) = 80 cm²',cutWhy:'屋身面積 60；屋頂面積 20。',fillWhy:'補成 10 × 10 的大長方形，減去兩個面積各 10 的角。'},
-    {id:'banner',name:'屋頂梯形',title:'例子 C · 梯形加長方形',sub:'下方長方形 12 × 5；上方梯形兩底為 6、12，高 3（單位：cm）',question:'在哪裏橫切，便可以直接套用兩個公式？',explain:'也可以補成 12 × 8 的長方形，再減去兩個角。',poly:'100,180 190,90 370,90 460,180 460,330 100,330',cut:[[100,180],[460,180]],parts:['100,180 460,180 460,330 100,330','100,180 190,90 370,90 460,180'],fill:['100,90 190,90 100,180','370,90 460,90 460,180'],fillOffset:[[-125,-55],[125,-55]],labels:[['6 cm',280,77],['12 cm',280,352],['3 cm',478,137],['5 cm',479,264]],cutExp:'12 × 5 + ½ × (6 + 12) × 3 = 87 cm²',fillExp:'12 × 8 − 2 × (½ × 3 × 3) = 87 cm²',cutWhy:'長方形面積 60；梯形面積 27。',fillWhy:'大長方形面積 96，減去兩個面積各 4.5 的三角形。'}
-  ];
-  const state = {module:'formula',formula:'triangle',shape:'l',strategy:'cut',progress:0,fill:0,revealFormula:false,revealPolygon:false,validCut:false,drawing:null,hint:false,animation:null};
-  function clamp(n,a,b){return Math.max(a,Math.min(b,n))}
-  function fmt(n){return Number(n.toFixed(4)).toString()}
-  function positive(id){const n=Number($(id).value);return Number.isFinite(n)&&n>0?n:null}
-  function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
-  function line(x1,y1,x2,y2,color=COLORS.line,width=2,dash=''){return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="${width}" ${dash?'stroke-dasharray="'+dash+'"':''}/>`}
-  function label(s,x,y,color=COLORS.ink,size=17,anchor='middle'){return `<text x="${x}" y="${y}" fill="${color}" font-size="${size}" text-anchor="${anchor}" font-weight="800">${esc(s)}</text>`}
-  function polygon(points,fill,stroke=COLORS.ink,opacity=1){return `<polygon points="${points}" fill="${fill}" fill-opacity="${opacity}" stroke="${stroke}" stroke-width="3" stroke-linejoin="round"/>`}
-  function marker(x,y,text){return `<circle cx="${x}" cy="${y}" r="13" fill="#fff" stroke="${COLORS.ink}" stroke-width="2"/>${label(text,x,y+5,COLORS.ink,14)}`}
-  function setActiveButtons(container,attr,id){document.querySelectorAll(container+' button').forEach(b=>{const active=b.dataset[attr]===id;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))})}
-  function switchModule(module){state.module=module;$('#formulaModule').classList.toggle('active',module==='formula');$('#polygonModule').classList.toggle('active',module==='polygon');$('#formulaTab').classList.toggle('active',module==='formula');$('#polygonTab').classList.toggle('active',module==='polygon');$('#formulaTab').setAttribute('aria-selected',String(module==='formula'));$('#polygonTab').setAttribute('aria-selected',String(module==='polygon'))}
-  function setFormula(id){state.formula=id;state.progress=0;state.revealFormula=false;stopAnimation();$('#formulaRange').value=0;const f=formulas.find(x=>x.id===id);$('#topInput').value=f.defaults[0];$('#baseInput').value=f.defaults[1];$('#heightInput').value=f.defaults[2];$('#topWrap').classList.toggle('hidden',id!=='trapezium');$('#heightWrap').classList.toggle('hidden',id==='square');$('#baseWrap').firstChild.textContent=id==='square'?'邊長 s':'底 b';setActiveButtons('#formulaPick','formula',id);renderFormula()}
-  function drawFormula(){const p=state.progress/100,id=state.formula;let out=bg;
-    if(id==='square'||id==='rectangle'){
-      const cols=id==='square'?6:8,rows=id==='square'?6:5,w=cols*42,h=rows*42,x=280-w/2,y=190-h/2;
-      out+=`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="#b9e8de" stroke="#173042" stroke-width="3"/>`;
-      const shown=p<.33?Math.ceil(cols*p*3):cols;for(let i=1;i<cols;i++)if(i<=shown)out+=line(x+i*42,y,x+i*42,y+h,'#55ad9e',1.5);
-      for(let j=1;j<rows;j++)if(p>.16)out+=line(x,y+j*42,x+w,y+j*42,'#55ad9e',1.5);
-      if(p>.45){out+=label(id==='square'?'s':'b',x+w/2,y+h+28,'#0c7569',20);out+=label(id==='square'?'s':'h',x-23,y+h/2,'#0c7569',20)}
-      if(p>.72)out+=label(cols+' × '+rows+' 個單位方格',280,40,'#254957',18);
-    }
-    if(id==='parallelogram'){
-      out+=polygon('190,230 410,230 470,80 190,80','#b9e8de');
-      out+=polygon(`${130+280*p},230 ${190+280*p},230 ${190+280*p},80`,'#efbb48','#b27a09');
-      out+=line(190,80,190,230,'#ee8065',3,'7 5');
-      out+=label('h',174,157,'#bf5c43',20);out+=label('b',300,264,'#0c7569',20);
-      if(p<.05)out+=label('把左邊的三角形切下來',280,50,'#315763',18);
-      if(p>.9)out+=label('同一面積 → 長方形',280,50,'#0c7569',19);
-    }
-    if(id==='triangle'){
-      out+=polygon('120,230 390,230 210,80','#15a893');
-      const dx=(1-p)*135,dy=(1-p)*-75;
-      out+=polygon(`${390+dx},${230+dy} ${210+dx},${80+dy} ${480+dx},${80+dy}`,'#efbb48','#b27a09',.4+.6*p);
-      out+=line(210,80,210,230,'#ee8065',3,'7 5');out+=label('h',193,159,'#bf5c43',20);out+=label('b',255,264,'#0c7569',20);
-      if(p<.1)out+=label('先認出一組底與垂直高',280,50,'#315763',18);
-      if(p>.9)out+=label('兩個全等三角形 → 一個平行四邊形',280,50,'#0c7569',18);
-    }
-    if(id==='trapezium'){
-      out+=polygon('160,230 410,230 350,80 230,80','#15a893');
-      const dx=(1-p)*120,dy=(1-p)*-80;
-      out+=polygon(`${410+dx},${230+dy} ${350+dx},${80+dy} ${600+dx},${80+dy} ${530+dx},${230+dy}`,'#efbb48','#b27a09',.4+.6*p);
-      out+=line(230,80,230,230,'#ee8065',3,'7 5');
-      out+=label('a',290,71,'#0c7569',20);out+=label('b',285,263,'#0c7569',20);out+=label('h',211,158,'#bf5c43',20);
-      if(p<.1)out+=label('先找出兩條平行邊',280,42,'#315763',18);
-      if(p>.9)out+=label('新底長 = a + b',280,42,'#0c7569',19);
-    }
-    $('#formulaSvg').innerHTML=out;
-  }
-  function renderFormula(){const f=formulas.find(x=>x.id===state.formula),p=state.progress;$('#formulaTitle').textContent=f.name;$('#formulaSubtitle').textContent=f.sub;$('#formulaQuestion').textContent=f.question;$('#formulaExplain').textContent=f.explain;const step=Math.min(2,Math.floor(p/34));$('#formulaBadge').textContent=f.steps[step];$('#formulaStep').textContent='第 '+(step+1)+' 步／3 步';drawFormula();
-    const a=positive('#topInput'),b=positive('#baseInput'),h=positive('#heightInput'),id=state.formula;
-    if((id==='trapezium'&&!a)||!b||(id!=='square'&&!h)){$('#formulaExpression').textContent='請輸入大於 0 的長度';$('#formulaWorked').textContent='';return}
-    let expr,work;
-    if(id==='square'){expr='A = s²';work=`A = ${fmt(b)} × ${fmt(b)} = ${fmt(b*b)} cm²`}
-    if(id==='rectangle'){expr='A = b × h';work=`A = ${fmt(b)} × ${fmt(h)} = ${fmt(b*h)} cm²`}
-    if(id==='parallelogram'){expr='A = b × h';work=`A = ${fmt(b)} × ${fmt(h)} = ${fmt(b*h)} cm²`}
-    if(id==='triangle'){expr='A = ½ × b × h';work=`A = ½ × ${fmt(b)} × ${fmt(h)} = ${fmt(b*h/2)} cm²`}
-    if(id==='trapezium'){expr='A = ½ × (a + b) × h';work=`A = ½ × (${fmt(a)} + ${fmt(b)}) × ${fmt(h)} = ${fmt((a+b)*h/2)} cm²`}
-    $('#formulaExpression').textContent=expr;$('#formulaWorked').textContent=work;$('#formulaExpression').classList.toggle('blurred',!state.revealFormula);$('#formulaWorked').classList.toggle('blurred',!state.revealFormula)
-  }
-  function stopAnimation(){if(state.animation){cancelAnimationFrame(state.animation);state.animation=null}$('#formulaPlay').textContent='播放推導'}
-  function playFormula(){if(state.animation){stopAnimation();return}const start=performance.now(),from=state.progress,duration=2300;$('#formulaPlay').textContent='暫停';function frame(now){const t=clamp((now-start)/duration,0,1);state.progress=from+(100-from)*(t*t*(3-2*t));$('#formulaRange').value=Math.round(state.progress);renderFormula();if(t<1)state.animation=requestAnimationFrame(frame);else stopAnimation()}state.animation=requestAnimationFrame(frame)}
-  function setShape(id){state.shape=id;state.strategy='cut';state.validCut=false;state.drawing=null;state.hint=false;state.fill=0;state.revealPolygon=false;$('#fillRange').value=0;$('#fillAmount').textContent='0%';$('#drawFeedback').className='feedback';$('#drawFeedback').textContent='請在圖上用手指或滑鼠畫一條分割線。';setActiveButtons('#shapePick','shape',id);setStrategy('cut');renderShape()}
-  function setStrategy(strategy){state.strategy=strategy;$('#cutBtn').classList.toggle('active',strategy==='cut');$('#fillBtn').classList.toggle('active',strategy==='fill');$('#cutControls').hidden=strategy!=='cut';$('#fillControls').hidden=strategy!=='fill';state.revealPolygon=false;renderShape()}
-  function polyPts(s){return s.split(' ').map(p=>p.split(',').map(Number))}
-  function drawShape(){const s=shapes.find(x=>x.id===state.shape);let out=bg;
-    if(state.strategy==='cut'&&state.validCut){out+=polygon(s.parts[0],'#b9e8de');out+=polygon(s.parts[1],'#ffdf8b','#a8740e')}
-    else out+=polygon(s.poly,'#b9e8de');
-    if(state.strategy==='cut'){
-      if(state.validCut){const [[x1,y1],[x2,y2]]=s.cut;out+=line(x1,y1,x2,y2,'#0c655d',5,'10 6')}
-      if(state.hint&&!state.validCut){const [x,y]=s.cut[0];out+=`<circle cx="${x}" cy="${y}" r="11" fill="#ee8065"/>${label('從這裏開始',x+75,y-14,'#ab4f38',16)}`}
-      if(state.drawing){const d=state.drawing;out+=line(d.start[0],d.start[1],d.end[0],d.end[1],'#ee8065',5,'9 5')}
-    }else{
-      let minX=100,maxX=460,minY=s.id==='house'?30:s.id==='banner'?90:80,maxY=330;
-      if(s.id==='house'){minX=130;maxX=430}
-      out+=`<rect x="${minX}" y="${minY}" width="${maxX-minX}" height="${maxY-minY}" fill="none" stroke="#ee8065" stroke-width="3" stroke-dasharray="9 6"/>`;
-      s.fill.forEach((piece,i)=>{const pts=polyPts(piece).map(([x,y])=>[x+s.fillOffset[i][0]*(1-state.fill/100),y+s.fillOffset[i][1]*(1-state.fill/100)].join(',')).join(' ');out+=polygon(pts,'#ee8065','#aa583f',.38+.48*state.fill/100)});
-    }
-    s.labels.forEach(([text,x,y])=>{out+=`<rect x="${x-34}" y="${y-17}" width="68" height="22" rx="7" fill="#fff" fill-opacity=".87"/>${label(text,x,y,COLORS.ink,15)}`});
-    if(state.strategy==='cut'&&state.validCut)out+=label('切開後，把兩部分的面積相加',280,34,'#0c655d',17);
-    if(state.strategy==='fill'&&state.fill>93)out+=label('大圖形 − 補上的部分',280,34,'#a2503d',17);
-    $('#polygonSvg').innerHTML=out;
-  }
-  function renderShape(){const s=shapes.find(x=>x.id===state.shape);$('#shapeTitle').textContent=s.title;$('#shapeSubtitle').textContent=s.sub;$('#shapeQuestion').textContent=s.question;$('#shapeExplain').textContent=s.explain;$('#shapeBadge').textContent=state.strategy==='cut'?'切割法':'填補法';$('#polygonExpression').textContent=state.revealPolygon?(state.strategy==='cut'?s.cutExp:s.fillExp):'先動手探索，再顯示算式';$('#polygonWorked').textContent=state.revealPolygon?(state.strategy==='cut'?s.cutWhy:s.fillWhy):'答案暫時隱藏，讓學生先說出策略。';drawShape()}
-  function svgPoint(ev){const svg=$('#polygonSvg'),p=svg.createSVGPoint();p.x=ev.clientX;p.y=ev.clientY;const result=p.matrixTransform(svg.getScreenCTM().inverse());return [result.x,result.y]}
-  function distance(a,b){return Math.hypot(a[0]-b[0],a[1]-b[1])}
-  function handleCutStart(ev){if(state.strategy!=='cut')return;ev.preventDefault();$('#polygonSvg').setPointerCapture(ev.pointerId);const p=svgPoint(ev);state.drawing={start:p,end:p};drawShape()}
-  function handleCutMove(ev){if(!state.drawing)return;ev.preventDefault();state.drawing.end=svgPoint(ev);drawShape()}
-  function handleCutEnd(ev){if(!state.drawing)return;ev.preventDefault();const s=shapes.find(x=>x.id===state.shape),d=state.drawing;const a=distance(d.start,s.cut[0])+distance(d.end,s.cut[1]),b=distance(d.start,s.cut[1])+distance(d.end,s.cut[0]);state.validCut=Math.min(a,b)<85;state.drawing=null;const feedback=$('#drawFeedback');feedback.className='feedback '+(state.validCut?'good':'warn');feedback.textContent=state.validCut?'切得好！現在說出兩部分各是甚麼圖形，然後相加。':'這條線未能把圖形分成預設的簡單部分。可按「提示起點」再試一次。';drawShape()}
-  $('#formulaPick').innerHTML=formulas.map(f=>`<button class="chip" type="button" data-formula="${f.id}" aria-pressed="false">${f.name}</button>`).join('');
-  $('#shapePick').innerHTML=shapes.map(s=>`<button class="chip" type="button" data-shape="${s.id}" aria-pressed="false">${s.name}</button>`).join('');
-  $('#formulaPick').addEventListener('click',e=>{const b=e.target.closest('[data-formula]');if(b)setFormula(b.dataset.formula)});
-  $('#shapePick').addEventListener('click',e=>{const b=e.target.closest('[data-shape]');if(b)setShape(b.dataset.shape)});
-  $('#formulaTab').onclick=()=>switchModule('formula');$('#polygonTab').onclick=()=>switchModule('polygon');
-  $('#formulaRange').oninput=e=>{stopAnimation();state.progress=Number(e.target.value);renderFormula()};
-  $('#formulaPlay').onclick=playFormula;$('#formulaReset').onclick=()=>{stopAnimation();state.progress=0;$('#formulaRange').value=0;renderFormula()};
-  $('#formulaReveal').onclick=()=>{state.revealFormula=!state.revealFormula;renderFormula()};
-  ['#topInput','#baseInput','#heightInput'].forEach(id=>$(id).oninput=renderFormula);
-  $('#cutBtn').onclick=()=>setStrategy('cut');$('#fillBtn').onclick=()=>setStrategy('fill');
-  $('#cutHint').onclick=()=>{state.hint=true;drawShape()};$('#cutClear').onclick=()=>{state.validCut=false;state.hint=false;$('#drawFeedback').className='feedback';$('#drawFeedback').textContent='請在圖上用手指或滑鼠畫一條分割線。';drawShape()};
-  $('#fillRange').oninput=e=>{state.fill=Number(e.target.value);$('#fillAmount').textContent=state.fill+'%';drawShape()};
-  $('#polygonReveal').onclick=()=>{state.revealPolygon=!state.revealPolygon;$('#polygonReveal').textContent=state.revealPolygon?'隱藏算式與答案':'顯示算式與答案';renderShape()};
-  $('#polygonReset').onclick=()=>setShape(state.shape);
-  const poly=$('#polygonSvg');poly.addEventListener('pointerdown',handleCutStart);poly.addEventListener('pointermove',handleCutMove);poly.addEventListener('pointerup',handleCutEnd);poly.addEventListener('pointercancel',()=>{state.drawing=null;drawShape()});
-  setFormula('triangle');setShape('l');switchModule('formula');
-})();
-</script>
+<script src="app.js"></script>
 </body>
 </html>
